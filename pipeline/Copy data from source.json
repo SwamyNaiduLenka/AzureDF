@@ -1,0 +1,126 @@
+{
+	"name": "Copy data from source",
+	"properties": {
+		"description": "Copy data from source",
+		"activities": [
+			{
+				"name": "blobtosqql",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"disableMetricsCollection": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "color_name",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "color_name",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "hex",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "hex",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "r",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "r",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "g",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "g",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							},
+							{
+								"source": {
+									"name": "b",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "b",
+									"type": "String",
+									"physicalType": "varchar"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "colourscsv",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "OutputAzureSqlTable",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-06-13T19:26:09Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

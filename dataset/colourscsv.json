@@ -1,0 +1,45 @@
+{
+	"name": "colourscsv",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "inputcherryblobv1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "colors.csv",
+				"container": "input"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "color_name",
+				"type": "String"
+			},
+			{
+				"name": "hex",
+				"type": "String"
+			},
+			{
+				"name": "r",
+				"type": "String"
+			},
+			{
+				"name": "g",
+				"type": "String"
+			},
+			{
+				"name": "b",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

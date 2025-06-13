@@ -1,0 +1,9 @@
+{
+	"name": "chetas2025",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "d64c2b0e-8547-44e1-88b1-2bc06f055d45",
+		"tenantId": "3b6b48b5-6e5f-49c4-afb2-9b65ae66b52d"
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"name": "OutputAzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "outputforcherry",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "color_name",
+				"type": "varchar"
+			},
+			{
+				"name": "hex",
+				"type": "varchar"
+			},
+			{
+				"name": "r",
+				"type": "varchar"
+			},
+			{
+				"name": "g",
+				"type": "varchar"
+			},
+			{
+				"name": "b",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "colours"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
